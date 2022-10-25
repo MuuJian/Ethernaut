@@ -1,7 +1,6 @@
 // SPXD-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-
 contract Attack {
     bool public side = true;
     Elevator public level;
