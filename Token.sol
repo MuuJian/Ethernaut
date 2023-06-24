@@ -1,18 +1,16 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
-interface IToken{
-    function transfer(address, uint) external returns(bool);
+interface Instance {
+    function transfer(address, uint) external returns (bool);
 }
 
-contract Token{
-    address Instance;
+contract Attack {
+    
+    Instance instance = Instance();
 
-    constructor(address _level) {
-        Instance = _level;
+    constructor() {
+        instance.transfer(0x47cBDD4ED9A9FDCe1fB7b61240100bAD22B7Bb00, 50);
     }
 
-    function task() public {
-        IToken(Instance).transfer(msg.sender, 50);
-    }
 }
