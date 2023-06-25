@@ -1,17 +1,19 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+interface Instance {
+    function unlock(bytes32) external;
+}
+
 contract Attack {
 
-    Privacy target;
+    Instance instance = Instance();
 
-    constructor(address _level) {
-        target = Privacy(_level);
-    }
-
-    function unlock(bytes32 _slotValue) public {
-        bytes16 key = bytes16(_slotValue);
-        target.unlock(key);
+    function unlock(bytes32 data) public {
+        
+        instance.unlock(bytes16(data));
     }
 
 }
+
+//await web3.eth.getStorageAt(instance, 5)

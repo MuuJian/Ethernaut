@@ -2,6 +2,7 @@
 pragma solidity ^0.8.20;
 
 interface Instance {
+    
     function flip(bool) external returns (bool);
 }
 
@@ -13,6 +14,7 @@ contract Attack {
     uint256 lastHash;
 
     function attack() public {
+        
         blockValue = uint256(blockhash(block.number - 1));
         if (lastHash == blockValue) {
             revert();

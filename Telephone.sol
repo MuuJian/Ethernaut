@@ -10,6 +10,7 @@ contract Attack {
     Instance instance = Instance();
 
     constructor() {
+        
         instance.changeOwner(msg.sender);
     }
 }

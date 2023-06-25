@@ -6,6 +6,7 @@ contract Attack {
     address payable to = payable(address());
 
     function attack() public payable {
+        
         to.call{value: msg.value}('');
     }
 
