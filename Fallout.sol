@@ -15,3 +15,7 @@ contract Attack {
         instance.Fal1out();
     }
 }
+
+/**
+ * Fallout拼错了，没有运行构造函数
+ */

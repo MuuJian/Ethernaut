@@ -10,3 +10,7 @@ contract Attack {
     }
 
 }
+
+/**
+ * 通过fallback去delegatecall另外一个合约夺取owner
+ */

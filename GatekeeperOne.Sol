@@ -23,3 +23,29 @@ function attack() public {
     }
 
 }
+
+/**
+ 
+modifier gateOne() {
+    require(msg.sender != tx.origin);
+    _;
+} 要用合约呼叫另外一张合约
+
+modifier gateTwo() {
+    require(gasleft() % 8191 == 0);
+    _;
+} 用剩的gas % 8191 == 0
+
+modifier gateThree(bytes8 _gateKey) {
+      require(uint32(uint64(_gateKey)) == uint16(uint64(_gateKey)), "GatekeeperOne: invalid gateThree part one");
+      require(uint32(uint64(_gateKey)) != uint64(_gateKey), "GatekeeperOne: invalid gateThree part two");
+      require(uint32(uint64(_gateKey)) == uint16(uint160(tx.origin)), "GatekeeperOne: invalid gateThree part three");
+    _;
+}
+
+uint32(uint64(_gateKey)) == uint16(uint64(_gateKey) 0xFFFFFFFF == 0x0000FFFF
+uint32(uint64(_gateKey)) != uint64(_gateKey) 0x00000000FFFFFFFF != 0xFFFFFFFFFFFFFFFF 
+uint32(uint64(_gateKey)) == uint16(uint160(tx.origin) 要求tx.origin
+
+0x00000000FFFFFFFF & 0xFFFFFFFF0000FFFF
+ */

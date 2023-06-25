@@ -11,3 +11,7 @@ contract Attack {
     }
 
 }
+
+/**
+ * 不写fallback/receive就接收不了eth
+ */

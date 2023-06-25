@@ -29,3 +29,7 @@ contract Attack {
             instance.flip(false);
     }
 }
+
+/**
+ * 同区块下抛硬币
+ */

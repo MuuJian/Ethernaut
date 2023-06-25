@@ -14,3 +14,7 @@ contract Attack {
         instance.changeOwner(msg.sender);
     }
 }
+
+/**
+ * 考tx.origin和msg.sender
+ */

@@ -11,3 +11,7 @@ contract Attack {
     }
 
 }
+
+/**
+ * selfdesturct销毁合约会把合约里的币转去目标接收者
+ */

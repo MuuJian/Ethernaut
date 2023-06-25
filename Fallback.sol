@@ -22,3 +22,9 @@ contract Attack {
 
     receive() payable external {}
 }
+
+/**
+ * 要先用contribute转进0.001eth，然后通过receive夺取合约的owner
+ *  
+ *  
+ */

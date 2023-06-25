@@ -19,3 +19,7 @@ contract Attack {
 
     }
 }
+
+/**
+ * 写一个合约操纵top
+ */
